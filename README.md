@@ -17,17 +17,15 @@ Veri seti Kaggle üzerinden dinamik olarak çekilmiş ve modelin genelleme yeten
 
 ### 3. Görselleştirme ve İstatistiksel Yorumlama
 Model kurulmadan önce verinin "röntgeni" çekilerek dağılımlar incelenmiştir.
+![Keşifçi Veri Analizi](images/Figure_1.png)
 
 #### A. Coğrafi Dağılım Analizi
-![Semtlere Göre Dağılım](image_1f8dca_geography.png) 
-*Buraya kendi yorumunu ekleyebilirsin:* Manhattan ve Brooklyn bölgelerindeki yoğunlaşma, bu bölgelerin emlak arzının merkezi olduğunu kanıtlamaktadır.
+*Analiz:* Manhattan ve Brooklyn bölgelerindeki yoğunlaşma, bu bölgelerin emlak arzının merkezi olduğunu kanıtlamaktadır.
 
 #### B. Semt Bazlı Fiyat Varyasyonu
-![Fiyat Kutu Grafiği](image_1f8dca_boxplot.png)
 *İstatistiksel Not:* Manhattan'ın medyan fiyatı diğer bölgelere göre anlamlı derecede yüksektir. $500 altındaki segmentte dahi çok sayıda "Outlier" (aykırı değer) bulunması, fiyatın sadece semtle açıklanamayacağını gösterir.
 
 #### C. Korelasyon Analizi
-![Keşifçi Veri Analizi](images/Figure_1.png)
 *Analiz:* Değişkenler arası doğrusal ilişkinin zayıf olması ($r < 0.10$), problemin çözümünde Doğrusal Regresyon yerine **XGBoost** gibi non-linear modellerin seçilme gerekçesidir.
 
 ### 4. Uç Değer (Outlier) Temizliği
@@ -47,6 +45,8 @@ Modelin "mekansal zekasını" artırmak için şu özellikler üretilmiştir:
 * **Profesyonel Host Flag:** Birden fazla ilanı olan ticari ev sahiplerinin tespiti.
 
 ### 8. Çarpıklık (Skewness) Analizi
+
+![Fiyat Dağılım Analizi](images/Figure_2.png)
 Logaritma dönüşümü sonrası dağılımın normalleştiği görselleştirilerek teyit edilmiştir. Normal dağılıma yakın veri, algoritmaların daha kararlı (stable) çalışmasını sağlar.
 
 ### 9. Eksik Veri Atama (MICE)
@@ -70,6 +70,8 @@ Modeller, test verisi üzerinde aşağıdaki metriklerle kıyaslanmıştır:
 | Random Forest | 0.6851 | 0.6807 | $40.74 | $76.59 | 426.4 |
 | LightGBM | 0.6751 | 0.6705 | $41.67 | $78.38 | 105.7 |
 
+![Değişken Önemi ve Model Karşılaştırması](images/Figure_3.png)
+![Başarı Metrikleri](images/Figure_4.png)
 
 * **Analiz:** **XGBoost**, hem en yüksek açıklayıcılık oranına ($R^2 = 0.70$) sahip olmuş hem de Random Forest'a göre çok daha hızlı bir eğitim süresi sunmuştur.
 
