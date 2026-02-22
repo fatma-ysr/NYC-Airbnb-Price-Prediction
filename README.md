@@ -43,10 +43,14 @@ Emlak fiyatlarındaki sağa çarpıklık (right-skewness), modelin hata payını
 İlan başlıkları (`name`) boş geçilmemiş; **TF-IDF** (Term Frequency-Inverse Document Frequency) yöntemiyle en önemli 100 kelime vektörleştirilerek modele "pazarlama özellikleri" olarak eklenmiştir.
 
 ### 7. Yeni Değişken Üretimi (Feature Engineering)
+
 Modelin "mekansal zekasını" artırmak için şu özellikler üretilmiştir:
-* **Haversine Mesafesi:** Evlerin Manhattan merkezine olan kuş uçuşu uzaklığı (KM).
-* **Popülerlik Skoru:** Yorum sayısı / Müsaitlik durumu etkileşimi.
-* **Profesyonel Host Flag:** Birden fazla ilanı olan ticari ev sahiplerinin tespiti.
+* **Haversine Mesafesi:** Evlerin Manhattan merkezine (Empire State) olan kuş uçuşu uzaklığı (KM).
+* **Oda-Semt Etkileşimi:** `room_type` ve `neighbourhood_group` birleştirilerek bölgeye özel oda fiyat dinamikleri oluşturulmuştur.
+* **Konaklama Kategorileri:** `minimum_nights` değişkeni kısa, orta ve uzun dönem olarak binning işlemine tabi tutulmuştur.
+* **Popülerlik Skoru:** Toplam yorum sayısının yıl içindeki müsaitlik günlerine oranı.
+* **Profesyonel Host Flag:** Birden fazla ilanı olan ticari ev sahiplerinin (Pro Host) tespiti.
+* **Yorum Yoğunluğu:** Aylık yorum hızının toplam yorum sayısına oranıyla talep sürekliliği ölçülmüştür.
 
 ### 8. Çarpıklık (Skewness) Analizi
 
