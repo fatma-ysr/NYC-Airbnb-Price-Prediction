@@ -45,12 +45,23 @@ Emlak fiyatlarındaki sağa çarpıklık (right-skewness), modelin hata payını
 ### 7. Yeni Değişken Üretimi (Feature Engineering)
 
 Modelin "mekansal zekasını" artırmak için şu özellikler üretilmiştir:
-* **Haversine Mesafesi:** Evlerin Manhattan merkezine (Empire State) olan kuş uçuşu uzaklığı (KM).
-* **Oda-Semt Etkileşimi:** `room_type` ve `neighbourhood_group` birleştirilerek bölgeye özel oda fiyat dinamikleri oluşturulmuştur.
-* **Konaklama Kategorileri:** `minimum_nights` değişkeni kısa, orta ve uzun dönem olarak binning işlemine tabi tutulmuştur.
-* **Popülerlik Skoru:** Toplam yorum sayısının yıl içindeki müsaitlik günlerine oranı.
-* **Profesyonel Host Flag:** Birden fazla ilanı olan ticari ev sahiplerinin (Pro Host) tespiti.
-* **Yorum Yoğunluğu:** Aylık yorum hızının toplam yorum sayısına oranıyla talep sürekliliği ölçülmüştür.
+* **Haversine Mesafesi (Manhattan Proximity):**
+    Koordinat verileri (`latitude`, `longitude`) ağaç tabanlı modeller için tek başlarına sınırlı anlam ifade eder. Haversine formülü kullanılarak, her ilanın Manhattan merkezine (Empire State: 40.7488, -73.9854) olan kuş uçuşu uzaklığı (KM) hesaplanmıştır. Gayrimenkul değerlemesinde "merkeze yakınlık" en kritik fiyat belirleyicilerinden biridir.
+
+* **Oda ve Semt Etkileşimi (Room-Neighbourhood Interaction):**
+    İlanın bulunduğu semt (`neighbourhood_group`) ve oda türü (`room_type`) arasındaki çapraz etkileşimi yakalamak için iki değişken birleştirilmiştir. Örneğin; Manhattan'daki bir "Özel Oda" ile Bronx'taki bir "Özel Oda" arasındaki fiyat makası bu değişken sayesinde model tarafından daha net ayırt edilebilir.
+
+* **Konaklama Süresi Kategorizasyonu (Stay Binning):**
+    `minimum_nights` değişkenindeki aşırı uç değerlerin (outliers) yarattığı gürültüyü azaltmak adına veriler kategorize edilmiştir. Konaklama süreleri; 3 güne kadar "Kısa Dönem", 14 güne kadar "Orta Dönem" ve daha fazlası "Uzun Dönem" olarak sınıflandırılmış, böylece ilanların kullanım amacı (turistik vs. yerleşik) modele öğretilmiştir.
+
+* **Göreceli Popülerlik Skoru (Popularity Score):**
+    Sosyal kanıt (social proof) metriklerini anlamlandırmak için, toplam yorum sayısı (`number_of_reviews`) evin yıl içindeki müsaitlik durumuna (`availability_365`) oranlanmıştır. Az bulunan ama çok yorum alan evler, arz-talep dengesinde "yüksek talep" olarak işaretlenmiştir.
+
+* **Profesyonel Ev Sahibi Ayrımı (Is Pro Host):**
+    Platformdaki toplam ilan sayısına (`calculated_host_listings_count`) bakılarak, 1'den fazla evi olan kullanıcılar "Profesyonel Ev Sahibi" (Binary: 1) olarak işaretlenmiştir. Ticari işletmelerin fiyatlandırma stratejileri ile bireysel kullanıcıların stratejileri arasındaki fark modele bu bayrak (flag) üzerinden aktarılmıştır.
+
+* **Yorum Yoğunluğu ve Talep Hızı (Review Density):**
+    İlanın güncel etkileşim hızını ölçmek için, aylık yorum alma hızı (`reviews_per_month`), toplam yorum sayısına oranlanmıştır. Bu oran, ilanın ne kadar süredir aktif olduğunu ve son dönemdeki popülerliğini yansıtan bir yoğunluk metriği sunar.
 
 ### 8. Çarpıklık (Skewness) Analizi
 
