@@ -35,7 +35,9 @@ Sadece filtreleme değil, **Isolation Forest** algoritması kullanılarak veride
 
 ### 5. Logaritmik Dönüşüm
 Emlak fiyatlarındaki sağa çarpıklık (right-skewness), modelin hata payını artırır. Bu durumu düzeltmek için hedef değişkene doğal logaritma uygulanmıştır:
-$$\text{log\_price} = \ln(\text{price})$$
+<p align="center">
+  $$\text{log\_price} = \ln(\text{price})$$
+</p>
 
 ### 6. Metin Madenciliği (NLP)
 İlan başlıkları (`name`) boş geçilmemiş; **TF-IDF** (Term Frequency-Inverse Document Frequency) yöntemiyle en önemli 100 kelime vektörleştirilerek modele "pazarlama özellikleri" olarak eklenmiştir.
