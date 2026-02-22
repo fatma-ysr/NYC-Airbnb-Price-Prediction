@@ -17,7 +17,9 @@ Veri seti Kaggle üzerinden dinamik olarak çekilmiş ve modelin genelleme yeten
 
 ### 3. Görselleştirme ve İstatistiksel Yorumlama
 Model kurulmadan önce verinin "röntgeni" çekilerek dağılımlar incelenmiştir.
-![Keşifçi Veri Analizi](images/Figure_1.png)
+<p align="center">
+  <img src="images/Figure_1.png" width="700">
+</p>
 
 #### A. Coğrafi Dağılım Analizi
 *Analiz:* Manhattan ve Brooklyn bölgelerindeki yoğunlaşma, bu bölgelerin emlak arzının merkezi olduğunu kanıtlamaktadır.
@@ -46,7 +48,9 @@ Modelin "mekansal zekasını" artırmak için şu özellikler üretilmiştir:
 
 ### 8. Çarpıklık (Skewness) Analizi
 
-![Fiyat Dağılım Analizi](images/Figure_2.png)
+<p align="center">
+  <img src="images/Figure_2.png" width="600">
+</p>
 Logaritma dönüşümü sonrası dağılımın normalleştiği görselleştirilerek teyit edilmiştir. Normal dağılıma yakın veri, algoritmaların daha kararlı (stable) çalışmasını sağlar.
 
 ### 9. Eksik Veri Atama (MICE)
@@ -70,13 +74,14 @@ Modeller, test verisi üzerinde aşağıdaki metriklerle kıyaslanmıştır:
 | Random Forest | 0.6851 | 0.6807 | $40.74 | $76.59 | 426.4 |
 | LightGBM | 0.6751 | 0.6705 | $41.67 | $78.38 | 105.7 |
 
-![Değişken Önemi ve Model Karşılaştırması](images/Figure_3.png)
-![Başarı Metrikleri](images/Figure_4.png)
+<p align="center">
+  <img src="images/Figure_3.png" width="500">
+  <img src="images/Figure_4.png" width="500">
+</p>
 
+*Sonuç:* Fiyatı belirleyen en önemli faktörün **Manhattan merkezine uzaklık** ve **oda tipi** olduğu matematiksel olarak kanıtlanmıştır.
 * **Analiz:** **XGBoost**, hem en yüksek açıklayıcılık oranına ($R^2 = 0.70$) sahip olmuş hem de Random Forest'a göre çok daha hızlı bir eğitim süresi sunmuştur.
 
-![Feature Importance](xgb_importance.png)
-*Sonuç:* Fiyatı belirleyen en önemli faktörün **Manhattan merkezine uzaklık** ve **oda tipi** olduğu matematiksel olarak kanıtlanmıştır.
 
 ---
 **Hazırlayan:** Fatma Alyasiri - Marmara Üniversitesi İstatistik Bölümü
