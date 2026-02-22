@@ -39,10 +39,18 @@ Emlak fiyatlarındaki sağa çarpıklık (right-skewness), modelin hata payını
   $$\text{log\_price} = \ln(\text{price})$$
 </p>
 
-### 6. Metin Madenciliği (NLP)
+### 6. Çarpıklık (Skewness) Analizi
+
+<p align="center">
+  <img src="images/Figure_2.png" width="600">
+</p>
+Logaritma dönüşümü sonrası dağılımın normalleştiği görselleştirilerek teyit edilmiştir. Normal dağılıma yakın veri, algoritmaların daha kararlı (stable) çalışmasını sağlar.
+
+
+### 7. Metin Madenciliği (NLP)
 İlan başlıkları (`name`) boş geçilmemiş; **TF-IDF** (Term Frequency-Inverse Document Frequency) yöntemiyle en önemli 100 kelime vektörleştirilerek modele "pazarlama özellikleri" olarak eklenmiştir.
 
-### 7. Yeni Değişken Üretimi (Feature Engineering)
+### 8. Yeni Değişken Üretimi (Feature Engineering)
 
 Modelin "mekansal zekasını" artırmak için şu özellikler üretilmiştir:
 * **Haversine Mesafesi (Manhattan Proximity):**
@@ -63,15 +71,9 @@ Modelin "mekansal zekasını" artırmak için şu özellikler üretilmiştir:
 * **Yorum Yoğunluğu ve Talep Hızı (Review Density):**
     İlanın güncel etkileşim hızını ölçmek için, aylık yorum alma hızı (`reviews_per_month`), toplam yorum sayısına oranlanmıştır. Bu oran, ilanın ne kadar süredir aktif olduğunu ve son dönemdeki popülerliğini yansıtan bir yoğunluk metriği sunar.
 
-### 8. Çarpıklık (Skewness) Analizi
-
-<p align="center">
-  <img src="images/Figure_2.png" width="600">
-</p>
-Logaritma dönüşümü sonrası dağılımın normalleştiği görselleştirilerek teyit edilmiştir. Normal dağılıma yakın veri, algoritmaların daha kararlı (stable) çalışmasını sağlar.
 
 ### 9. Eksik Veri Atama (MICE)
-`reviews_per_month` gibi kritik sütunlardaki eksikler, basit ortalama yerine **Multivariate Imputation by Chained Equations (MICE)** ile diğer değişkenler üzerinden tahmin edilerek doldurulmuştur.
+`reviews_per_month` gibi kritik sütunlardaki eksikler,  **Multivariate Imputation by Chained Equations (MICE)** ile diğer değişkenler üzerinden tahmin edilerek doldurulmuştur.
 
 ### 10. Test Seti Ayrımı
 Modelin performansı, eğitimde hiç görmediği %20'lik bir **Test Seti** üzerinde objektif olarak değerlendirilmiştir ($X\_test$, $y\_test$).
