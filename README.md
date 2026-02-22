@@ -1,5 +1,5 @@
 # NYC-Airbnb-Price-Prediction
-# 🗽 NYC Airbnb Fiyat Tahminleme: İleri Düzey İstatistiksel Modelleme
+# 🗽 NYC Airbnb Fiyat Tahminleme
 
 Bu proje, New York City Airbnb veri setini kullanarak, bir konutun piyasa değerini etkileyen unsurları **12 adımda** analiz eden ve tahminleyen kapsamlı bir veri bilimi çalışmasıdır. Proje; veri temizleme, NLP, coğrafi özellik mühendisliği ve hiperparametre optimizasyonu gibi ileri düzey teknikler içermektedir.
 
