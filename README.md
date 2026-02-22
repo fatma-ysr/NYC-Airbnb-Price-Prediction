@@ -27,7 +27,7 @@ Model kurulmadan önce verinin "röntgeni" çekilerek dağılımlar incelenmişt
 *İstatistiksel Not:* Manhattan'ın medyan fiyatı diğer bölgelere göre anlamlı derecede yüksektir. $500 altındaki segmentte dahi çok sayıda "Outlier" (aykırı değer) bulunması, fiyatın sadece semtle açıklanamayacağını gösterir.
 
 #### C. Korelasyon Analizi
-![Korelasyon Heatmap](image_1f8dca_heatmap.png)
+![Keşifçi Veri Analizi](images/Figure_1.png)
 *Analiz:* Değişkenler arası doğrusal ilişkinin zayıf olması ($r < 0.10$), problemin çözümünde Doğrusal Regresyon yerine **XGBoost** gibi non-linear modellerin seçilme gerekçesidir.
 
 ### 4. Uç Değer (Outlier) Temizliği
